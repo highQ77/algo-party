@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>William77 X 微醺演算派對</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <script src="./assets/browser@4"></script>
+    <style>
+        .font-tech {
+            font-family: 'Orbitron', 'Rajdhani', sans-serif;
+        }
+
+        .bg-diagonal {
+            background-size: 10px 10px;
+            background-image: repeating-linear-gradient(45deg,
+                    #414553 0,
+                    #414553 1px,
+                    #35354d33 0,
+                    #35354d33 50%);
+        }
+
+        .text-border-black {
+            text-shadow:
+                1px 1px 1px black,
+                -1px -1px 1px black,
+                1px -1px 1px black,
+                -1px 1px 1px black;
+        }
+    </style>
+    <script>
+        window.onload = _ => {
+            let allworks = document.getElementById('allworks')
+            let html = `
+                <div class="relative">
+                    <img src="./assets/512/abstract-fantacy-vector-@.png" width="300"
+                        class="rounded-[5px] border-5 border-gray-800/70 rounded-[10px] m-2">
+                    <div class="absolute left-5 top-2 text-white">@</div>
+                </div>
+            `
+            for (let i = 0; i < 32; i++) {
+                let wid = ('' + (i + 1)).padStart(3, '0')
+                let item = document.createElement('div')
+                item.innerHTML = html.replaceAll('@', wid)
+                allworks.appendChild(item)
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-700 font-tech zoom-[0.9] sm:zoom-[1]">
+    <div class="flex justify-between text-gray-200 bg-gray-800 p-3">
+        <div class="text-border-black">William77 <span class="text-gray-600">X</span> 微醺演算派對 <span
+                class="text-gray-600">X</span> 商業圖樣作品集</div>
+        <div><span class="text-[14px] text-border-black">update @ 2027/09/01</span></div>
+    </div>
+    <div class="border border-lime-200"></div>
+    <div>
+        <div class="border border-gray-700 bg-diagonal text-border-black text-white">
+            <div class="flex justify-center p-10">
+                <img src="./assets/sample.png" width="250">
+                <div>
+                    <div class="text-[32px]">AlgoParty</div>
+                    <div class="text-[32px] text-lime-200">合作項目與應用場合</div>
+                    <div>🔸 配合手機殼與科技周邊商品印刷</div>
+                    <div>🔸 配合各式生活商品印刷</div>
+                    <div>🔸 配合畫作輸出</div>
+                    <div>🔸 配合紡織圖樣印刷</div>
+                    <div>🔸 新圖樣生成交付</div>
+                    <div class="mt-5">( 目前僅提供 30 x 30 cm 尺寸內 300dpi 的圖檔, 不含印刷服務 )</div>
+
+                    <div class="mt-5">創作者: <span style="font-family: Arial;">William77</span></div>
+                    <div>Threads: <span style="font-family: Arial;">William77.fun</span></div>
+                    <div>合作信箱: <span style="font-family: Arial;">edwinliang.tw@gmail.com</span></div>
+                    <div class="mt-5">左側為手機殼視覺設計示意圖<br />下方圖為低解析圖無法達到印刷品質</div>
+                </div>
+            </div>
+            <div id="allworks" class="mb-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="flex justify-between text-gray-200 bg-gray-800 p-3 h-[200px]">
+        <div class="text-lime-200">Thanks</div>
+    </div>
+    <div class="border border-lime-200"></div>
+    <div class="flex justify-between text-gray-200 bg-gray-800 p-3 h-[200px]">
+        <div class="text-border-black">William77 <span class="text-gray-600">X</span> 微醺演算派對 <span
+                class="text-gray-600">X</span> 商業圖樣作品集</div>
+        <div><span class="text-[14px] text-border-black">update @ 2027/09/01</span></div>
+    </div>
+</body>
+
+</html>

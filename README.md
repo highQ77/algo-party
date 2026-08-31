@@ -1,2 +1,1 @@
-# algo-party
-creative coding for business
+# 微醺演算派對
