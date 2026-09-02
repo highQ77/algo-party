@@ -35,19 +35,47 @@
     <script>
         window.onload = _ => {
             let allworks = document.getElementById('allworks')
-            let html = `
+            let style1 = document.getElementById('style1')
+            let style2 = document.getElementById('style2')
+
+            function abstract_fantacy_vector() {
+                let html = `
                 <div class="relative">
-                    <img src="./assets/512/abstract-fantacy-vector-@.png" width="300"
+                    <img src="./assets/512/abastract-fantacy-vector/abstract-fantacy-vector-@.png" width="300"
                         class="rounded-[5px] border-5 border-gray-800/70 rounded-[10px] m-2">
                     <div class="absolute left-5 top-2 text-white">@</div>
                 </div>
             `
-            for (let i = 0; i < 32; i++) {
-                let wid = ('' + (i + 1)).padStart(3, '0')
-                let item = document.createElement('div')
-                item.innerHTML = html.replaceAll('@', wid)
-                allworks.appendChild(item)
+                allworks.innerHTML = ''
+                for (let i = 0; i < 32; i++) {
+                    let wid = ('' + (i + 1)).padStart(3, '0')
+                    let item = document.createElement('div')
+                    item.innerHTML = html.replaceAll('@', wid)
+                    allworks.appendChild(item)
+                }
             }
+
+            function abstract_fantacy_stone() {
+                let html = `
+                <div class="relative">
+                    <img src="./assets/512/abstract-fantacy-stone/abstract-fantacy-stone-@.png" width="300"
+                        class="rounded-[5px] border-5 border-gray-800/70 rounded-[10px] m-2">
+                    <div class="absolute left-5 top-2 text-white">@</div>
+                </div>
+            `
+                allworks.innerHTML = ''
+                for (let i = 0; i < 24; i++) {
+                    let wid = ('' + (i + 1)).padStart(3, '0')
+                    let item = document.createElement('div')
+                    item.innerHTML = html.replaceAll('@', wid)
+                    allworks.appendChild(item)
+                }
+            }
+
+            style1.onclick = abstract_fantacy_vector
+            style2.onclick = abstract_fantacy_stone
+
+            style1.click()
         }
     </script>
 </head>
@@ -62,7 +90,7 @@
     <div>
         <div class="border border-gray-700 bg-diagonal text-border-black text-white">
             <div class="grid grid-cols-1 sm:grid-cols-2 p-10">
-                <div class="flex justify-center"><img src="./assets/sample.png" width="250"></div>
+                <div class="flex justify-center mb-10 sm:mb-0"><img src="./assets/sample.png" width="250"></div>
                 <div>
                     <div class="text-[32px]">AlgoParty</div>
                     <div class="text-[32px] text-lime-200">合作項目與應用場合</div>
@@ -76,7 +104,7 @@
                     <div class="mt-5">創作者: <span style="font-family: Arial;">William77</span></div>
                     <div>Threads: <span style="font-family: Arial;">William77.fun</span></div>
                     <div>合作信箱: <span style="font-family: Arial;">edwinliang.tw@gmail.com</span></div>
-                    <div class="mt-5">左側為手機殼視覺設計示意圖<br />下方圖為低解析圖無法達到印刷品質</div>
+                    <div class="mt-5">手機殼為示意圖<br />下方圖為低解析圖無法達到印刷品質<br />畫面右側可選擇不同風格</div>
                 </div>
             </div>
             <div id="allworks" class="mb-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
@@ -93,6 +121,19 @@
         <div class="text-border-black">William77 <span class="text-gray-600">X</span> 微醺演算派對 <span
                 class="text-gray-600">X</span> 商業圖樣作品集</div>
         <div><span class="text-[14px] text-border-black">update @ 2027/09/01</span></div>
+    </div>
+
+    <!-- side menu -->
+    <div class="fixed right-0 bottom-0 w-10 min-h-10 bg-black text-white">
+        <div class="flex justify-center items-center w-10 h-10 text-[12px] text-center">select</div>
+        <div id="style1"
+            class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
+            渦流
+        </div>
+        <div id="style2"
+            class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
+            蛇皮
+        </div>
     </div>
 </body>
 
