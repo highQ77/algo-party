@@ -40,6 +40,7 @@
             let style3 = document.getElementById('style3')
             let style4 = document.getElementById('style4')
             let style5 = document.getElementById('style5')
+            let style6 = document.getElementById('style6')
 
             function abstract_fantacy_vector() {
                 let html = `
@@ -126,11 +127,29 @@
                 }
             }
 
+            function abstract_slash() {
+                let html = `
+                <div class="relative">
+                    <img src="./assets/512/abstract-slash/abstract-slash-@.png" width="300"
+                        class="rounded-[5px] border-5 border-gray-800/70 rounded-[10px] m-2">
+                    <div class="absolute left-5 top-2 text-white">@</div>
+                </div>
+            `
+                allworks.innerHTML = ''
+                for (let i = 0; i < 12; i++) {
+                    let wid = ('' + (i + 1)).padStart(3, '0')
+                    let item = document.createElement('div')
+                    item.innerHTML = html.replaceAll('@', wid)
+                    allworks.appendChild(item)
+                }
+            }
+
             style1.onclick = abstract_fantacy_vector
             style2.onclick = abstract_fantacy_stone
             style3.onclick = kali_amazing_flower
             style4.onclick = abstract_ink_splashing
             style5.onclick = abstract_brush_heads
+            style6.onclick = abstract_slash
 
             style1.click()
         }
@@ -202,6 +221,10 @@
         <div id="style5"
             class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
             竄流
+        </div>
+        <div id="style6"
+            class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
+            混沌
         </div>
     </div>
 </body>
