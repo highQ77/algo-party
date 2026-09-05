@@ -45,7 +45,7 @@
             let style8 = document.getElementById('style8')
             let style9 = document.getElementById('style9')
 
-            function painting(name) {
+            function painting(name, count = 12) {
                 let html = `
                 <div class="relative">
                     <img src="./assets/512/${name}/${name}-@.png" width="300"
@@ -54,7 +54,7 @@
                 </div>
             `
                 allworks.innerHTML = ''
-                for (let i = 0; i < 12; i++) {
+                for (let i = 0; i < count; i++) {
                     let wid = ('' + (i + 1)).padStart(3, '0')
                     let item = document.createElement('div')
                     item.innerHTML = html.replaceAll('@', wid)
@@ -62,9 +62,9 @@
                 }
             }
 
-            style1.onclick = () => painting('abstract-fantacy-vector');
-            style2.onclick = () => painting('abstract-fantacy-stone');
-            style3.onclick = () => painting('kali-amazing-flower');
+            style1.onclick = () => painting('abstract-fantacy-vector', 32);
+            style2.onclick = () => painting('abstract-fantacy-stone', 24);
+            style3.onclick = () => painting('kali-amazing-flower', 24);
             style4.onclick = () => painting('abstract-ink-splashing');
             style5.onclick = () => painting('abstract-brush-heads');
             style6.onclick = () => painting('abstract-slash');
