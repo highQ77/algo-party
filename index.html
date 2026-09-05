@@ -45,6 +45,7 @@
             let style8 = document.getElementById('style8')
             let style9 = document.getElementById('style9')
             let style10 = document.getElementById('style10')
+            let style11 = document.getElementById('style11')
 
             function painting(name, count = 12) {
                 let html = `
@@ -73,6 +74,7 @@
             style8.onclick = () => painting('kaleido-unreal');
             style9.onclick = () => painting('abstract-balls');
             style10.onclick = () => painting('abstract-fresh-color');
+            style11.onclick = () => painting('kaleido-cute', 24);
 
             style1.click()
         }
@@ -164,6 +166,10 @@
         <div id="style10"
             class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
             繽紛
+        </div>
+        <div id="style11"
+            class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
+            少女
         </div>
     </div>
 </body>
