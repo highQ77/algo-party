@@ -48,6 +48,7 @@
             let style11 = document.getElementById('style11')
             let style12 = document.getElementById('style12')
             let style13 = document.getElementById('style13')
+            let style14 = document.getElementById('style14')
 
             function painting(name, count = 12) {
                 let html = `
@@ -79,6 +80,8 @@
             style11.onclick = () => painting('kaleido-cute', 24);
             style12.onclick = () => painting('ascii-toon-world');
             style13.onclick = () => painting('abstract-geo-mania');
+            style14.onclick = () => painting('abstract-weird-flower');
+
 
             style1.click()
         }
@@ -182,6 +185,10 @@
         <div id="style13"
             class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
             圈禪
+        </div>
+        <div id="style14"
+            class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
+            奇花
         </div>
     </div>
 </body>
