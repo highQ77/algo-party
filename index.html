@@ -4,26 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>William77 X 微醺演算派對</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
-        rel="stylesheet">
-    <script src="./assets/browser@4"></script>
+    <title>演算美學</title>
     <style>
-        .font-tech {
-            font-family: 'Orbitron', 'Rajdhani', sans-serif;
-        }
-
-        .bg-diagonal {
-            background-size: 10px 10px;
-            background-image: repeating-linear-gradient(45deg,
-                    #414553 0,
-                    #414553 1px,
-                    #35354d33 0,
-                    #35354d33 50%);
-        }
-
         .text-border-black {
             text-shadow:
                 1px 1px 1px black,
@@ -31,10 +13,38 @@
                 1px -1px 1px black,
                 -1px 1px 1px black;
         }
+
+        .bg-diagonal {
+            background-size: 10px 10px;
+            background-image: repeating-linear-gradient(45deg,
+                    #41455366 0,
+                    #41455366 1px,
+                    #35354d33 0,
+                    #35354d33 50%);
+        }
     </style>
+    <script src="./assets/browser@4"></script>
     <script>
-        window.onload = _ => {
+        window.onload = () => {
             let allworks = document.getElementById('allworks')
+
+            function painting(name, count = 12) {
+                let html = `
+                <div class="relative">
+                    <img src="./assets/512/${name}/${name}-@.png" width="300"
+                        class="border-5 border-white outline-2 outline-gray-700 m-2 my-4">
+                    <div class="absolute left-5 top-2 text-white text-border-black">@</div>
+                </div>
+            `
+                allworks.innerHTML = ''
+                for (let i = 0; i < count; i++) {
+                    let wid = ('' + (i + 1)).padStart(3, '0')
+                    let item = document.createElement('div')
+                    item.innerHTML = html.replaceAll('@', wid)
+                    allworks.appendChild(item)
+                }
+            }
+
             let style1 = document.getElementById('style1')
             let style2 = document.getElementById('style2')
             let style3 = document.getElementById('style3')
@@ -49,23 +59,7 @@
             let style12 = document.getElementById('style12')
             let style13 = document.getElementById('style13')
             let style14 = document.getElementById('style14')
-
-            function painting(name, count = 12) {
-                let html = `
-                <div class="relative">
-                    <img src="./assets/512/${name}/${name}-@.png" width="300"
-                        class="rounded-[5px] border-5 border-gray-800/70 rounded-[10px] m-2">
-                    <div class="absolute left-5 top-2 text-white">@</div>
-                </div>
-            `
-                allworks.innerHTML = ''
-                for (let i = 0; i < count; i++) {
-                    let wid = ('' + (i + 1)).padStart(3, '0')
-                    let item = document.createElement('div')
-                    item.innerHTML = html.replaceAll('@', wid)
-                    allworks.appendChild(item)
-                }
-            }
+            let style15 = document.getElementById('style15')
 
             style1.onclick = () => painting('abstract-fantacy-vector', 32);
             style2.onclick = () => painting('abstract-fantacy-stone', 24);
@@ -81,115 +75,117 @@
             style12.onclick = () => painting('ascii-toon-world');
             style13.onclick = () => painting('abstract-geo-mania');
             style14.onclick = () => painting('abstract-weird-flower');
-
-
             style1.click()
         }
     </script>
 </head>
 
-<body class="bg-gray-700 font-tech zoom-[0.9] sm:zoom-[1]">
-    <div class="flex justify-between text-gray-200 bg-gray-800 p-3">
-        <div class="text-border-black">William77 <span class="text-gray-600">X</span> 微醺演算派對 <span
-                class="text-gray-600">X</span> 商業圖樣作品集</div>
-        <div><span class="text-[14px] text-border-black">update @ 2027/09/01</span></div>
-    </div>
-    <div class="border border-lime-200"></div>
-    <div>
-        <div class="border border-gray-700 bg-diagonal text-border-black text-white">
-            <div class="grid grid-cols-1 sm:grid-cols-2 p-10">
-                <div class="flex justify-center mb-10 sm:mb-0"><img src="./assets/sample.png" width="250"></div>
-                <div>
-                    <div class="text-[32px]">AlgoParty</div>
-                    <div class="text-[32px] text-lime-200">合作項目與應用場合</div>
-                    <div>🔸 配合手機殼與科技周邊商品印刷</div>
-                    <div>🔸 配合各式生活商品印刷</div>
-                    <div>🔸 配合畫作輸出</div>
-                    <div>🔸 配合紡織圖樣印刷</div>
-                    <div>🔸 新圖樣生成交付</div>
-                    <div class="mt-5">( 目前僅提供 20 x 20 cm 尺寸內 300dpi 的圖檔, 不含印刷服務 )</div>
-
-                    <div class="mt-5">創作者: <span style="font-family: Arial;">William77</span></div>
-                    <div>Threads: <span style="font-family: Arial;">William77.fun</span></div>
-                    <div>合作信箱: <span style="font-family: Arial;">edwinliang.tw@gmail.com</span></div>
-                    <div class="mt-5">手機殼為示意圖<br />下方圖為低解析圖無法達到印刷品質<br />畫面右側可選擇不同風格</div>
-                </div>
+<body class="bg-diagonal font-serif">
+    <div class="h-[5px] bg-black/50 border-t border-t-2"></div>
+    <div class="px-4">
+        <nav class="flex justify-between pt-5">
+            <div>
+                <span class="text-[32px]">ALGO-AESTHETICS</span> 演算美學
             </div>
-            <div id="allworks" class="mb-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+            <div class="flex items-center text-[12px]">
+                edited by william77
+            </div>
+        </nav>
+        <div>
+            <div class="my-10 text-[16px]">
+                <div class="text-[28px] font-bold">合作項目與應用場合</div>
+                <div>◆ 配合手機殼與科技周邊商品印刷</div>
+                <div>◆ 配合各式生活商品印刷</div>
+                <div>◆ 配合畫作輸出</div>
+                <div>◆ 配合紡織圖樣印刷</div>
+                <div>◆ 運動商品圖樣印刷</div>
+                <div>◆ 新圖樣生成交付</div>
+
+                <div class="mt-5">創作者: <span>William77</span></div>
+                <div>Threads: <span>William77.fun</span></div>
+                <div>合作信箱: <span>edwinliang.tw@gmail.com</span></div>
+                <div class="mt-5">下方圖為低解析圖無法達到印刷品質<br />畫面右側可選擇不同風格</div>
+            </div>
+            <div id="allworks" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- <img src="./assets/512/abstract-fantacy-vector/abstract-fantacy-vector-001.png"
+                    class="border-5 border-white outline-10 outline-gray-700"> -->
             </div>
         </div>
     </div>
-
     <!-- footer -->
-    <div class="flex justify-between text-gray-200 bg-gray-800 p-3 h-[200px]">
-        <div class="text-lime-200">Thanks</div>
-    </div>
-    <div class="border border-lime-200"></div>
-    <div class="flex justify-between text-gray-200 bg-gray-800 p-3 h-[200px]">
-        <div class="text-border-black">William77 <span class="text-gray-600">X</span> 微醺演算派對 <span
-                class="text-gray-600">X</span> 商業圖樣作品集</div>
-        <div><span class="text-[14px] text-border-black">update @ 2027/09/01</span></div>
-    </div>
-
+    <footer class="mt-10">
+        <div class="flex justify-between text-gray-200 bg-black/50 p-3 h-[200px]">
+            <div class="text-gray-200">Thanks</div>
+        </div>
+        <div class="flex justify-between text-gray-200 bg-black/90 p-3 h-[200px]">
+            <div class="text-border-black">William77 <span class="text-yellow-100">X</span> 演算美學 <span
+                    class="text-yellow-100">X</span> 商業圖樣作品集</div>
+            <div><span class="text-[14px] text-border-black">update @ 2026/09/01</span></div>
+        </div>
+    </footer>
     <!-- side menu -->
     <div class="fixed right-1 top-30 w-10 min-h-10 bg-black text-white outline">
         <div class="flex justify-center items-center w-10 h-10 text-[12px] text-center">select</div>
         <div id="style1"
-            class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
+            class="flex justify-center items-center w-10 h-10 bg-black/60 border-t border-gray-500 cursor-pointer text-[12px]">
             渦流
         </div>
         <div id="style2"
-            class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
+            class="flex justify-center items-center w-10 h-10 bg-black/60 border-t border-gray-500 cursor-pointer text-[12px]">
             蛇皮
         </div>
         <div id="style3"
-            class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
+            class="flex justify-center items-center w-10 h-10 bg-black/60 border-t border-gray-500 cursor-pointer text-[12px]">
             綻放
         </div>
         <div id="style4"
-            class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
+            class="flex justify-center items-center w-10 h-10 bg-black/60 border-t border-gray-500 cursor-pointer text-[12px]">
             百鬼
         </div>
         <div id="style5"
-            class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
+            class="flex justify-center items-center w-10 h-10 bg-black/60 border-t border-gray-500 cursor-pointer text-[12px]">
             竄流
         </div>
         <div id="style6"
-            class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
+            class="flex justify-center items-center w-10 h-10 bg-black/60 border-t border-gray-500 cursor-pointer text-[12px]">
             混沌
         </div>
         <div id="style7"
-            class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
+            class="flex justify-center items-center w-10 h-10 bg-black/60 border-t border-gray-500 cursor-pointer text-[12px]">
             宇宙
         </div>
         <div id="style8"
-            class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
+            class="flex justify-center items-center w-10 h-10 bg-black/60 border-t border-gray-500 cursor-pointer text-[12px]">
             魔法
         </div>
         <div id="style9"
-            class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
+            class="flex justify-center items-center w-10 h-10 bg-black/60 border-t border-gray-500 cursor-pointer text-[12px]">
             大球
         </div>
         <div id="style10"
-            class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
+            class="flex justify-center items-center w-10 h-10 bg-black/60 border-t border-gray-500 cursor-pointer text-[12px]">
             毛皮
         </div>
         <div id="style11"
-            class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
+            class="flex justify-center items-center w-10 h-10 bg-black/60 border-t border-gray-500 cursor-pointer text-[12px]">
             少女
         </div>
         <div id="style12"
-            class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
+            class="flex justify-center items-center w-10 h-10 bg-black/60 border-t border-gray-500 cursor-pointer text-[12px]">
             語言
         </div>
         <div id="style13"
-            class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
+            class="flex justify-center items-center w-10 h-10 bg-black/60 border-t border-gray-500 cursor-pointer text-[12px]">
             圈禪
         </div>
         <div id="style14"
-            class="flex justify-center items-center w-10 h-10 bg-gray-800 border-t border-gray-500 cursor-pointer text-[12px]">
+            class="flex justify-center items-center w-10 h-10 bg-black/60 border-t border-gray-500 cursor-pointer text-[12px]">
             奇花
         </div>
+        <!-- <div id="style15"
+            class="flex justify-center items-center w-10 h-10 bg-black/60 border-t border-gray-500 cursor-pointer text-[12px]">
+            述說
+        </div> -->
     </div>
 </body>
 
