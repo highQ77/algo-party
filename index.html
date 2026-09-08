@@ -80,6 +80,11 @@
             style16.onclick = () => painting('strange-city');
             style1.click()
         }
+
+        function toggleMenu() {
+            let menu = document.getElementById('menu')
+            menu.classList.toggle('right-[-300px]')
+        }
     </script>
 </head>
 
@@ -123,79 +128,85 @@
         <div class="flex justify-between text-gray-200 bg-black/50 p-3 h-[200px]">
             <div class="text-gray-200">Thanks</div>
         </div>
-        <div class="flex justify-between text-gray-200 bg-black/90 p-3 h-[200px]">
+        <div class="flex justify-between text-[14px] text-gray-200 bg-black/90 p-3 h-[200px]">
             <div class="text-border-black">William77 <span class="text-yellow-100">X</span> 演算美學 <span
                     class="text-yellow-100">X</span> 商業圖樣作品集</div>
             <div><span class="text-[14px] text-border-black">update @ 2026/09/01</span></div>
         </div>
     </footer>
     <!-- side menu -->
-    <div
-        class="grid grid-cols-5 fixed right-2 bottom-20 backdrop-blur min-w-10 min-h-10 bg-black/30 text-white outline-3 border-4 border-white/70 outline-black/90 rounded-[12px] overflow-hidden">
-        <div class="flex justify-center items-center w-15 h-10 text-[12px] text-center">select</div>
-        <div id="style1"
-            class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-            渦流
+    <div id="menu" class="flex items-center fixed right-2 bottom-5" style="transition:1s all">
+        <div onclick="toggleMenu()"
+            class="mr-5 flex justify-center items-center w-10 h-10 text-gray-300 bg-black/60 outline-3 border-4 border-white/70 outline-black/90 rounded-full">
+            &lt; &gt;
         </div>
-        <div id="style2"
-            class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-            蛇皮
-        </div>
-        <div id="style3"
-            class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-            綻放
-        </div>
-        <div id="style4"
-            class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-            百鬼
-        </div>
-        <div id="style5"
-            class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-            竄流
-        </div>
-        <div id="style6"
-            class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-            混沌
-        </div>
-        <div id="style7"
-            class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-            宇宙
-        </div>
-        <div id="style8"
-            class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-            魔法
-        </div>
-        <div id="style9"
-            class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-            大球
-        </div>
-        <div id="style10"
-            class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-            毛皮
-        </div>
-        <div id="style11"
-            class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-            少女
-        </div>
-        <div id="style12"
-            class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-            語言
-        </div>
-        <div id="style13"
-            class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-            圈禪
-        </div>
-        <div id="style14"
-            class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-            奇花
-        </div>
-        <div id="style15"
-            class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-            謎樣
-        </div>
-        <div id="style16"
-            class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-            城市
+        <div
+            class="grid grid-cols-5 backdrop-blur min-w-10 min-h-10 bg-black/30 text-white outline-3 border-4 border-white/70 outline-black/90 rounded-[12px] overflow-hidden">
+            <div class="flex justify-center items-center w-15 h-10 text-[12px] text-center">select</div>
+            <div id="style1"
+                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
+                渦流
+            </div>
+            <div id="style2"
+                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
+                蛇皮
+            </div>
+            <div id="style3"
+                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
+                綻放
+            </div>
+            <div id="style4"
+                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
+                百鬼
+            </div>
+            <div id="style5"
+                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
+                竄流
+            </div>
+            <div id="style6"
+                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
+                混沌
+            </div>
+            <div id="style7"
+                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
+                宇宙
+            </div>
+            <div id="style8"
+                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
+                魔法
+            </div>
+            <div id="style9"
+                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
+                大球
+            </div>
+            <div id="style10"
+                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
+                毛皮
+            </div>
+            <div id="style11"
+                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
+                少女
+            </div>
+            <div id="style12"
+                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
+                語言
+            </div>
+            <div id="style13"
+                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
+                圈禪
+            </div>
+            <div id="style14"
+                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
+                奇花
+            </div>
+            <div id="style15"
+                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
+                流動
+            </div>
+            <div id="style16"
+                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
+                城市
+            </div>
         </div>
     </div>
 </body>
