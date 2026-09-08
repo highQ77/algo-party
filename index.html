@@ -61,6 +61,7 @@
             let style14 = document.getElementById('style14')
             let style15 = document.getElementById('style15')
             let style16 = document.getElementById('style16')
+            let style17 = document.getElementById('style17')
 
             style1.onclick = () => painting('abstract-fantacy-vector', 32);
             style2.onclick = () => painting('abstract-fantacy-stone', 24);
@@ -78,6 +79,7 @@
             style14.onclick = () => painting('abstract-weird-flower');
             style15.onclick = () => painting('abstract-ink-flow');
             style16.onclick = () => painting('strange-city');
+            style17.onclick = () => painting('abstract-ink-flow-magic');
             style1.click()
         }
 
@@ -90,8 +92,8 @@
 
 <body class="bg-diagonal font-serif">
     <div class="h-[5px] bg-black/50 border-t border-t-2"></div>
-    <div class="px-4">
-        <nav class="flex justify-between pt-5">
+    <div class="pr-5">
+        <nav class="px-4 flex justify-between pt-5">
             <div>
                 <span class="text-[32px]">ALGO-AESTHETICS</span> 演算美學
             </div>
@@ -100,7 +102,7 @@
             </div>
         </nav>
         <div>
-            <div class="my-10 text-[16px]">
+            <div class="px-4 my-10 text-[16px]">
                 <div class="text-[28px] font-bold">合作項目與應用場合</div>
                 <div>&nbsp;</div>
                 <div>目前僅提供圖檔, 不含印刷服務</div>
@@ -189,7 +191,7 @@
             </div>
             <div id="style12"
                 class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                語言
+                言語
             </div>
             <div id="style13"
                 class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
@@ -206,6 +208,10 @@
             <div id="style16"
                 class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
                 城市
+            </div>
+            <div id="style17"
+                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
+                墨流
             </div>
         </div>
     </div>
