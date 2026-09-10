@@ -45,6 +45,24 @@
                 }
             }
 
+            function paintings(names) {
+                allworks.innerHTML = ''
+                for (let i = 0; i < names.length; i++) {
+                    let name = names[i]
+                    console.log(name)
+                    let html = `
+                    <div class="relative">
+                        <img src="./assets/512/single/${name}.png" width="300"
+                            class="border-5 border-white outline-2 outline-gray-700 m-2 my-4">
+                        <div class="absolute left-5 top-2 text-white text-border-black">@</div>
+                    </div>`
+                    let item = document.createElement('div')
+                    item.innerHTML = html
+                    allworks.appendChild(item)
+                }
+            }
+
+            let style999 = document.getElementById('style999')
             let style1 = document.getElementById('style1')
             let style2 = document.getElementById('style2')
             let style3 = document.getElementById('style3')
@@ -65,6 +83,7 @@
             let style18 = document.getElementById('style18')
             let style19 = document.getElementById('style19')
 
+            style999.onclick = () => paintings(['abstract-candy']);
             style1.onclick = () => painting('abstract-fantacy-vector', 32);
             style2.onclick = () => painting('abstract-fantacy-stone', 24);
             style3.onclick = () => painting('kali-amazing-flower', 24);
@@ -149,7 +168,6 @@
         </div>
         <div
             class="grid grid-cols-5 backdrop-blur min-w-10 min-h-10 bg-black/30 text-white outline-3 border-4 border-white/70 outline-black/90 rounded-[12px] overflow-hidden">
-            <div class="flex justify-center items-center w-15 h-10 text-[12px] text-center">select</div>
             <div id="style1"
                 class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
                 渦流
@@ -225,6 +243,10 @@
             <div id="style19"
                 class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
                 觸手
+            </div>
+            <div id="style999"
+                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
+                單幅
             </div>
         </div>
     </div>
