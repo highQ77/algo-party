@@ -48,13 +48,13 @@
             function paintings(names) {
                 allworks.innerHTML = ''
                 for (let i = 0; i < names.length; i++) {
+                    let wid = ('' + (i + 1)).padStart(3, '0')
                     let name = names[i]
-                    console.log(name)
                     let html = `
                     <div class="relative">
                         <img src="./assets/512/single/${name}.png" width="300"
                             class="border-5 border-white outline-2 outline-gray-700 m-2 my-4">
-                        <div class="absolute left-5 top-2 text-white text-border-black">@</div>
+                        <div class="absolute left-5 top-2 text-white text-border-black">${wid}</div>
                     </div>`
                     let item = document.createElement('div')
                     item.innerHTML = html
@@ -93,6 +93,7 @@
                 'abstract-candy',
                 'toon-soda',
                 'square-art',
+                'girlwp-collage',
             ]);
             style1.onclick = () => painting('abstract-fantacy-vector', 32);
             style2.onclick = () => painting('abstract-fantacy-stone', 24);
