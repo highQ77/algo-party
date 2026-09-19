@@ -17,332 +17,160 @@
         .bg-diagonal {
             background-size: 10px 10px;
             background-image: repeating-linear-gradient(45deg,
-                    #41455366 0,
-                    #41455366 1px,
-                    #35354d33 0,
-                    #35354d33 50%);
+                    #222222ff 0,
+                    #222222ff 1px,
+                    #000000ff 0,
+                    #000000ff 50%);
+        }
+
+        .text-main {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
         }
     </style>
     <script src="./assets/browser@4"></script>
     <script>
         window.onload = () => {
-            let allworks = document.getElementById('allworks')
 
-            function painting(name, count = 12) {
-                let html = `
-                <div class="relative">
-                    <img src="./assets/512/${name}/${name}-@.png" width="300"
-                        class="border-5 border-white outline-2 outline-gray-700 m-2 my-4">
-                    <div class="absolute left-5 top-2 text-white text-border-black">@</div>
-                </div>
-            `
-                allworks.innerHTML = ''
-                for (let i = 0; i < count; i++) {
-                    let wid = ('' + (i + 1)).padStart(3, '0')
-                    let item = document.createElement('div')
-                    item.innerHTML = html.replaceAll('@', wid)
-                    allworks.appendChild(item)
-                }
-            }
-
-            function paintings(names) {
-                allworks.innerHTML = ''
-                for (let i = 0; i < names.length; i++) {
-                    let wid = ('' + (i + 1)).padStart(3, '0')
-                    let name = names[i]
-                    let html = `
-                    <div class="relative">
-                        <img src="./assets/512/single/${name}.png" width="300"
-                            class="border-5 border-white outline-2 outline-gray-700 m-2 my-4">
-                        <div class="absolute left-5 top-2 text-white text-border-black">${wid}</div>
-                    </div>`
-                    let item = document.createElement('div')
-                    item.innerHTML = html
-                    allworks.appendChild(item)
-                }
-            }
-
-            let style999 = document.getElementById('style999')
-            let style1 = document.getElementById('style1')
-            let style2 = document.getElementById('style2')
-            let style3 = document.getElementById('style3')
-            let style4 = document.getElementById('style4')
-            let style5 = document.getElementById('style5')
-            let style6 = document.getElementById('style6')
-            let style7 = document.getElementById('style7')
-            let style8 = document.getElementById('style8')
-            let style9 = document.getElementById('style9')
-            let style10 = document.getElementById('style10')
-            let style11 = document.getElementById('style11')
-            let style12 = document.getElementById('style12')
-            let style13 = document.getElementById('style13')
-            let style14 = document.getElementById('style14')
-            let style15 = document.getElementById('style15')
-            let style16 = document.getElementById('style16')
-            let style17 = document.getElementById('style17')
-            let style18 = document.getElementById('style18')
-            let style19 = document.getElementById('style19')
-            let style20 = document.getElementById('style20')
-            let style21 = document.getElementById('style21')
-            let style22 = document.getElementById('style22')
-            let style23 = document.getElementById('style23')
-            let style24 = document.getElementById('style24')
-            let style25 = document.getElementById('style25')
-            let style26 = document.getElementById('style26')
-            let style27 = document.getElementById('style27')
-            let style28 = document.getElementById('style28')
-            let style29 = document.getElementById('style29')
-            let style30 = document.getElementById('style30')
-            let style31 = document.getElementById('style31')
-            let style32 = document.getElementById('style32')
-            let style33 = document.getElementById('style33')
-            let style34 = document.getElementById('style34')
-
-            style999.onclick = () => paintings([
-                'abstract-candy',
-                'toon-soda',
-                'square-art',
-                'abstract-real-og',
-            ]);
-            style1.onclick = () => painting('abstract-fantacy-vector', 32);
-            style2.onclick = () => painting('abstract-fantacy-stone', 24);
-            style3.onclick = () => painting('kali-tex');
-            style4.onclick = () => painting('abstract-ink-splashing-v2');
-            style5.onclick = () => painting('twisted-shape');
-            style6.onclick = () => painting('matrix-pattern', 32);
-            style7.onclick = () => painting('abstract-splash-ink-with-bubble');
-            style8.onclick = () => painting('kaleido-unreal');
-            style9.onclick = () => painting('abstract-balls');
-            style10.onclick = () => painting('abstract-fresh-color');
-            style11.onclick = () => painting('sand-grid-style');
-            style12.onclick = () => painting('some-text');
-            style13.onclick = () => painting('stone-array');
-            style14.onclick = () => painting('abstract-weird-flower');
-            style15.onclick = () => painting('abstract-ink-flow');
-            style16.onclick = () => painting('strange-city');
-            style17.onclick = () => painting('abstract-ink-flow-magic');
-            style18.onclick = () => painting('abstract-radio-disp-v3');
-            style19.onclick = () => painting('sea-anemone');
-            style20.onclick = () => painting('kaleido-real');
-            style21.onclick = () => painting('abstract-brush-heads-v2');
-            style22.onclick = () => painting('fur-painting');
-            style23.onclick = () => painting('graffiti-style');
-            style24.onclick = () => painting('abstract-grid-with-fragment');
-            style25.onclick = () => painting('color-pen');
-            style26.onclick = () => painting('colorful-liquid');
-            style27.onclick = () => painting('half-abstract-flow');
-            style28.onclick = () => painting('abstract-unreal-twisted-painting');
-            style29.onclick = () => painting('abstract-real-tex');
-            style30.onclick = () => painting('diamond-pattern');
-            style31.onclick = () => painting('diamond-pattern-fast');
-            style32.onclick = () => painting('fantastic-grid');
-            style33.onclick = () => painting('abstract-smoke');
-            style34.onclick = () => painting('diamond-pattern-simple');
-
-            style1.click()
-        }
-
-        function toggleMenu() {
-            let menu = document.getElementById('menu')
-            menu.classList.toggle('right-[-300px]')
         }
     </script>
 </head>
 
-<body class="bg-diagonal font-serif">
-    <div class="h-[5px] bg-black/50 border-t border-t-2"></div>
-    <div class="pr-5">
-        <nav class="px-4 flex justify-between pt-5">
-            <div>
-                <span class="text-[32px]">ALGO-AESTHETICS</span> 演算美學
-            </div>
-            <div class="flex items-center text-[12px]">
-                edited by william77.
-            </div>
-        </nav>
-        <div>
-            <div class="px-4 my-10 text-[16px]">
-                <div class="text-[28px] font-bold">合作項目與應用場合</div>
-                <div>&nbsp;</div>
-                <div>目前僅提供圖檔, 不含印刷服務</div>
-                <div>&nbsp;</div>
-                <div>◆ 配合手機殼與科技周邊商品印刷</div>
-                <div>◆ 配合各式生活商品印刷</div>
-                <div>◆ 配合畫作輸出</div>
-                <div>◆ 配合紡織圖樣印刷</div>
-                <div>◆ 配合運動商品圖樣印刷</div>
-                <div>◆ 新圖樣生成交付</div>
+<body class="bg-diagonal text-white">
 
-                <div>370+ paintings</div>
-                <div class="mt-5">創作者: <span>William77</span></div>
-                <div>Threads: <span>william77.fun</span></div>
-                <div>合作信箱: <span>edwinliang.tw@gmail.com</span></div>
-                <div class="mt-5">下方圖為低解析圖無法達到印刷品質<br />畫面右側可選擇不同風格</div>
-            </div>
-            <div id="allworks" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- <img src="./assets/512/abstract-fantacy-vector/abstract-fantacy-vector-001.png"
-                    class="border-5 border-white outline-10 outline-gray-700"> -->
-            </div>
+    <div class="h-[2px] bg-black-500"></div>
+    <div class="h-[2px] bg-yellow-500"></div>
+    <div class="h-[2px] bg-black-500"></div>
+    <div class="h-[2px] bg-yellow-500"></div>
+    <div class="h-[2px] bg-black-500"></div>
+    <div class="h-[2px] bg-yellow-500"></div>
+    <div class="h-[2px] bg-black-500"></div>
+    <div class="h-[2px] bg-yellow-500"></div>
+    <div class="h-[2px] bg-black-500"></div>
+    <div class="h-[2px] bg-yellow-500"></div>
+
+    <nav class="px-4 py-4 flex justify-between">
+        <div>
+            <span class="text-[64px] text-main italic text-yellow-500">A</span>
+            <span class="text-[64px] text-main italic">A</span>
+            <span>演算美學</span>
+            <span class="text-[12px]">v3.0</span>
+        </div>
+        <div class="flex items-center text-[12px]">
+            edited by william77.
+        </div>
+    </nav>
+    <div class="bg-white/10 py-3">
+        <div
+            class="flex items-center h-[300px] bg-center bg-[url(./assets/512/diamond-pattern-simple/diamond-pattern-simple-008.png)]">
         </div>
     </div>
-    <!-- footer -->
-    <footer class="mt-10">
-        <div class="flex justify-between text-gray-200 bg-black/50 p-3 h-[200px]">
-            <div class="text-gray-200">Thanks</div>
+    <div class="flex justify-between text-white/50 p-4 mt-10"><span>作者精選21幅畫作展示</span> <a href="./old.html"
+            class="text-white">查看更多畫作</a>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 p-4">
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/abstract-fantacy-stone/abstract-fantacy-stone-023.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
         </div>
-        <div class="flex justify-between text-[14px] text-gray-200 bg-black/90 p-3 h-[200px]">
-            <div class="text-border-black">William77 <span class="text-yellow-100">X</span> 演算美學 <span
-                    class="text-yellow-100">X</span> 商業圖樣作品集</div>
-            <div><span class="text-[14px] text-border-black">update @ 2026/09/01</span></div>
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/abstract-fantacy-vector/abstract-fantacy-vector-013.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
         </div>
-    </footer>
-    <!-- side menu -->
-    <div id="menu" class="flex items-center fixed right-2 bottom-5" style="transition:1s all">
-        <div onclick="toggleMenu()"
-            class="mr-5 flex justify-center items-center w-10 h-10 text-gray-300 bg-black/60 outline-3 border-4 border-white/70 outline-black/90 rounded-full">
-            &lt; &gt;
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/abstract-ink-flow/abstract-ink-flow-005.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
         </div>
-        <div
-            class="grid grid-cols-5 backdrop-blur min-w-10 min-h-10 bg-black/30 text-white outline-3 border-4 border-white/70 outline-black/90 rounded-[12px] overflow-hidden">
-            <div id="style1"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                渦流
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/abstract-radio-disp-v3/abstract-radio-disp-v3-006.png)] bg-center bg-cover h-[300px] max-w-full">
             </div>
-            <div id="style2"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                蛇皮
+        </div>
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/abstract-real-tex/abstract-real-tex-003.png)] bg-center bg-cover h-[300px] max-w-full">
             </div>
-            <div id="style3"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                綻放
+        </div>
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/abstract-smoke/abstract-smoke-006.png)] bg-center bg-cover h-[300px] max-w-full">
             </div>
-            <div id="style4"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                百鬼
+        </div>
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/abstract-splash-ink-with-bubble/abstract-splash-ink-with-bubble-011.png)] bg-center bg-cover h-[300px] max-w-full">
             </div>
-            <div id="style5"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                竄流
+        </div>
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/colorful-liquid/colorful-liquid-005.png)] bg-center bg-cover h-[300px] max-w-full">
             </div>
-            <div id="style6"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                圖磚
+        </div>
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/diamond-pattern/diamond-pattern-001.png)] bg-center bg-cover h-[300px] max-w-full">
             </div>
-            <div id="style7"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                宇宙
+        </div>
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/diamond-pattern-fast/diamond-pattern-fast-012.png)] bg-center bg-cover h-[300px] max-w-full">
             </div>
-            <div id="style8"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                魔法
+        </div>
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/diamond-pattern-simple/diamond-pattern-simple-003.png)] bg-center bg-cover h-[300px] max-w-full">
             </div>
-            <div id="style9"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                大球
+        </div>
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/fantastic-grid/fantastic-grid-007.png)] bg-center bg-cover h-[300px] max-w-full">
             </div>
-            <div id="style10"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                毛皮
+        </div>
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/fur-painting/fur-painting-009.png)] bg-center bg-cover h-[300px] max-w-full">
             </div>
-            <div id="style11"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                拼貼
+        </div>
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/graffiti-style/graffiti-style-008.png)] bg-center bg-cover h-[300px] max-w-full">
             </div>
-            <div id="style12"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                言語
+        </div>
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/kaleido-real/kaleido-real-002.png)] bg-center bg-cover h-[300px] max-w-full">
             </div>
-            <div id="style13"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                蜂忙
+        </div>
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/kaleido-unreal/kaleido-unreal-011.png)] bg-center bg-cover h-[300px] max-w-full">
             </div>
-            <div id="style14"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                奇花
+        </div>
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/kali-tex/kali-tex-005.png)] bg-center bg-cover h-[300px] max-w-full">
             </div>
-            <div id="style15"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                流動
+        </div>
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/matrix-pattern/matrix-pattern-003.png)] bg-center bg-cover h-[300px] max-w-full">
             </div>
-            <div id="style16"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                城市
+        </div>
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/sea-anemone/sea-anemone-008.png)] bg-center bg-cover h-[300px] max-w-full">
             </div>
-            <div id="style17"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                墨流
+        </div>
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/single/abstract-candy.png)] bg-center bg-cover h-[300px] max-w-full">
             </div>
-            <div id="style18"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                迷幻
-            </div>
-            <div id="style19"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                觸手
-            </div>
-            <div id="style20"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                實鏡
-            </div>
-            <div id="style21"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                山雲
-            </div>
-            <div id="style22"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                絲滑
-            </div>
-            <div id="style23"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                塗鴉
-            </div>
-            <div id="style24"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                方格
-            </div>
-            <div id="style25"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                色鉛筆
-            </div>
-            <div id="style26"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                古怪
-            </div>
-            <div id="style27"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                幻彩
-            </div>
-            <div id="style28"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                奇異
-            </div>
-            <div id="style29"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                意象
-            </div>
-            <div id="style30"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                菱格
-            </div>
-            <div id="style31"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                菱格F
-            </div>
-            <div id="style32"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                花與格
-            </div>
-            <div id="style33"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                雲海
-            </div>
-            <div id="style34"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                菱格S
-            </div>
-            <div id="style999"
-                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
-                單幅
+        </div>
+        <div>
+            <div
+                class="border border-yellow-500 bg-[url(./assets/512/strange-city/strange-city-009.png)] bg-center bg-cover h-[300px] max-w-full">
             </div>
         </div>
     </div>
