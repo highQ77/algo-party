@@ -162,7 +162,7 @@
             // call room 3d
             [...document.querySelectorAll('.my-painting')].forEach(i => {
                 let imgPath = i.className.split('bg-[url(')[1].split(')]')[0]
-                i.addEventListener('click', () => {
+                i.addEventListener('pointerup', () => {
                     tex = loader.load(imgPath);
                     tex.colorSpace = THREE.SRGBColorSpace;
                     material.map = tex;
@@ -174,7 +174,7 @@
             // close room
             let close = document.querySelector('.close')
             close.classList.toggle('hidden')
-            close.addEventListener('click', () => {
+            close.addEventListener('pointerup', () => {
                 v.classList.toggle('hidden')
                 close.classList.toggle('hidden')
             })
