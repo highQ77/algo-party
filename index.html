@@ -151,8 +151,8 @@
             // 關閉畫作
             let close = document.querySelector('.close')
             close.addEventListener('pointerup', () => {
-                v.classList.toggle('hidden')
-                close.classList.toggle('hidden')
+                v.classList.add('hidden')
+                close.classList.add('hidden')
             });
 
             // 展示畫作
@@ -161,12 +161,17 @@
                 tex = loader.load(imgPath);
                 tex.colorSpace = THREE.SRGBColorSpace;
                 material.map = tex;
-                v.classList.toggle('hidden')
-                close.classList.toggle('hidden')
+                v.classList.remove('hidden')
+                close.classList.remove('hidden')
                 resize();
             }
 
-            window.openPainting(document.querySelector('.my-painting'))
+            // 事件綁定
+            document.querySelectorAll('.my-painting').forEach(painting => {
+                painting.addEventListener('pointerup', () => {
+                    window.openPainting(painting)
+                })
+            })
 
             // 視窗縮放處理
             function resize() {
@@ -208,7 +213,7 @@
             <span class="text-[64px] text-main italic text-yellow-500">A</span>
             <span class="text-[64px] text-main italic">A</span>
             <span>演算美學</span>
-            <span class="text-[12px]">v3.32</span>
+            <span class="text-[12px]">v3.33</span>
         </div>
         <div class="flex items-center text-[12px]">
             edited by william77.
