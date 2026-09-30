@@ -34,19 +34,24 @@
         .text-main {
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
         }
+
+        .my-painting {
+            cursor: pointer;
+            touch-action: manipulation;
+        }
     </style>
     <script src="./assets/browser@4"></script>
-    <script type="importmap">
+    <!-- <script type="importmap">
     {
         "imports": {
             "three": "./node_modules/three/build/three.module.js",
             "three/addons/": "./node_modules/three/examples/jsm/"
         }
     }
-    </script>
+    </script> -->
     <script type="module">
-        import * as THREE from 'three';
-        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import * as THREE from './node_modules/three/build/three.module.js';
+        import { OrbitControls } from './node_modules/three/examples/jsm/controls/OrbitControls.js';
 
         window.addEventListener('DOMContentLoaded', () => {
 
@@ -150,17 +155,28 @@
 
             // 關閉畫作
             let close = document.querySelector('.close')
-            close.addEventListener('pointerup', () => {
+            close.addEventListener('click', () => {
                 v.classList.add('hidden')
                 close.classList.add('hidden')
             });
 
             // 展示畫作
             window.openPainting = function (painting) {
-                let imgPath = painting.className.split('bg-[url(')[1].split(')]')[0]
-                tex = loader.load(imgPath);
-                tex.colorSpace = THREE.SRGBColorSpace;
-                material.map = tex;
+                const backgroundImage = getComputedStyle(painting).backgroundImage;
+                const imageUrl = backgroundImage.match(/^url\(["']?(.*?)["']?\)$/)?.[1];
+
+                if (!imageUrl) {
+                    console.error('Unable to find painting image URL:', backgroundImage);
+                    return;
+                }
+
+                tex = loader.load(new URL(imageUrl, document.baseURI).href, texture => {
+                    texture.colorSpace = THREE.SRGBColorSpace;
+                    material.map = texture;
+                    material.needsUpdate = true;
+                }, undefined, error => {
+                    console.error('Unable to load painting image:', imageUrl, error);
+                });
                 v.classList.remove('hidden')
                 close.classList.remove('hidden')
                 resize();
@@ -168,7 +184,7 @@
 
             // 事件綁定
             document.querySelectorAll('.my-painting').forEach(painting => {
-                painting.addEventListener('pointerup', () => {
+                painting.addEventListener('click', () => {
                     window.openPainting(painting)
                 })
             })
@@ -213,7 +229,7 @@
             <span class="text-[64px] text-main italic text-yellow-500">A</span>
             <span class="text-[64px] text-main italic">A</span>
             <span>演算美學</span>
-            <span class="text-[12px]">v3.33</span>
+            <span class="text-[12px]">v3.331</span>
         </div>
         <div class="flex items-center text-[12px]">
             edited by william77.
@@ -226,7 +242,7 @@
         </div>
     </div>
     <div class="flex justify-between text-white/50 p-4 mt-10">
-        <span>作者精選 23 幅畫作展示</span>
+        <span>作者精選畫作展示</span>
         <a href="./old.html" class="text-white">查看更多畫作</a>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4 p-4">
