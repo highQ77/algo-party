@@ -41,17 +41,18 @@
         }
     </style>
     <script src="./assets/browser@4"></script>
-    <!-- <script type="importmap">
+    <script async src="./es-module-shims.min.js"></script>
+    <script type="importmap">
     {
         "imports": {
             "three": "./node_modules/three/build/three.module.js",
             "three/addons/": "./node_modules/three/examples/jsm/"
         }
     }
-    </script> -->
+    </script>
     <script type="module">
-        import * as THREE from './node_modules/three/build/three.module.js';
-        import { OrbitControls } from './node_modules/three/examples/jsm/controls/OrbitControls.js';
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
         window.addEventListener('DOMContentLoaded', () => {
 
@@ -229,7 +230,7 @@
             <span class="text-[64px] text-main italic text-yellow-500">A</span>
             <span class="text-[64px] text-main italic">A</span>
             <span>演算美學</span>
-            <span class="text-[12px]">v3.331</span>
+            <span class="text-[12px]">v3.332</span>
         </div>
         <div class="flex items-center text-[12px]">
             edited by william77.
