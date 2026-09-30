@@ -148,17 +148,6 @@
 
             animate();
 
-            // 視窗縮放處理
-            function resize() {
-                let rect = { width: window.innerWidth, height: window.innerHeight }
-                camera.aspect = rect.width / rect.height;
-                camera.updateProjectionMatrix();
-                renderer.setSize(rect.width, rect.height);
-            }
-
-            window.addEventListener('resize', resize);
-            resize();
-
             // close room
             let close = document.querySelector('.close')
             close.addEventListener('pointerup', () => {
@@ -170,17 +159,25 @@
             [...document.querySelectorAll('.my-painting')].forEach((i, idx) => {
                 let imgPath = i.className.split('bg-[url(')[1].split(')]')[0]
                 i.addEventListener('pointerup', () => {
+                    alert(imgPath)
                     tex = loader.load(imgPath);
                     tex.colorSpace = THREE.SRGBColorSpace;
                     material.map = tex;
                     v.classList.toggle('hidden')
                     close.classList.toggle('hidden')
                 })
-                // if (idx == 0) {
-                //     i.dispatchEvent(new Event('pointerup'))
-                //     close.dispatchEvent(new Event('pointerup'))
-                // }
             })
+
+            // 視窗縮放處理
+            function resize() {
+                let rect = { width: window.innerWidth, height: window.innerHeight }
+                camera.aspect = rect.width / rect.height;
+                camera.updateProjectionMatrix();
+                renderer.setSize(rect.width, rect.height);
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
 
         })
     </script>
@@ -211,7 +208,7 @@
             <span class="text-[64px] text-main italic text-yellow-500">A</span>
             <span class="text-[64px] text-main italic">A</span>
             <span>演算美學</span>
-            <span class="text-[12px]">v3.0</span>
+            <span class="text-[12px]">v3.1</span>
         </div>
         <div class="flex items-center text-[12px]">
             edited by william77.
