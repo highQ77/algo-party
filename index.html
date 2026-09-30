@@ -165,6 +165,8 @@
                 close.classList.toggle('hidden')
             }
 
+            window.openPainting(document.querySelector('.my-painting'))
+
             // 視窗縮放處理
             function resize() {
                 let rect = { width: window.innerWidth, height: window.innerHeight }
@@ -205,7 +207,7 @@
             <span class="text-[64px] text-main italic text-yellow-500">A</span>
             <span class="text-[64px] text-main italic">A</span>
             <span>演算美學</span>
-            <span class="text-[12px]">v3.3</span>
+            <span class="text-[12px]">v3.31</span>
         </div>
         <div class="flex items-center text-[12px]">
             edited by william77.
@@ -223,7 +225,7 @@
     </div>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4 p-4">
         <div>
-            <div onpointerup="openPainting(this)"
+            <div
                 class="my-painting border border-yellow-500 bg-[url(./assets/512/single/ascii-light-010.png)] bg-center bg-cover h-[300px] max-w-full">
             </div>
         </div>
