@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>演算美學</title>
+    <style>
+        .text-border-black {
+            text-shadow:
+                1px 1px 1px black,
+                -1px -1px 1px black,
+                1px -1px 1px black,
+                -1px 1px 1px black;
+        }
+
+        .text-border-white {
+            text-shadow:
+                1px 1px 1px white,
+                -1px -1px 1px white,
+                1px -1px 1px white,
+                -1px 1px 1px white;
+        }
+
+        .bg-diagonal {
+            background-size: 10px 10px;
+            background-image: repeating-linear-gradient(45deg,
+                    #222222ff 0,
+                    #222222ff 1px,
+                    #000000ff 0,
+                    #000000ff 50%);
+        }
+
+        .text-main {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+        }
+
+        .my-painting {
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+    </style>
+    <script src="./assets/browser@4"></script>
+    <!-- <script type="importmap">
+    {
+        "imports": {
+            "three": "./node_modules/three/build/three.module.js",
+            "three/addons/": "./node_modules/three/examples/jsm/"
+        }
+    }
+    </script> -->
+
+    <!-- <script type="importmap">
+    {
+        "imports": {
+            "three": "https://raw.githubusercontent.com/highQ77/algo-party/refs/heads/main/node_modules/three/build/three.module.js",
+            "three/addons/": "https://raw.githubusercontent.com/highQ77/algo-party/refs/heads/main/node_modules/three/examples/jsm/controls/OrbitControls.js"
+        }
+    }
+    </script> -->
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+        window.addEventListener('DOMContentLoaded', () => {
+
+            let v = document.getElementById('room3d')
+
+            const loader = new THREE.TextureLoader();
+            let tex = loader.load('./assets/512/abstract-balls/abstract-balls-001.png');
+            tex.colorSpace = THREE.SRGBColorSpace;
+
+            let sceneColor = new THREE.Color();
+            sceneColor.setHSL(.01, 1.0, 0.5);
+
+            // 1. 初始化場景
+            const scene = new THREE.Scene();
+            scene.background = sceneColor;
+
+            // 2. 攝影機設定
+            const camera = new THREE.PerspectiveCamera(
+                75,
+                window.innerWidth / window.innerHeight,
+                0.1,
+                1000,
+            );
+            camera.position.set(0, 0, 3);
+
+            // 3. 渲染器設定 (開啟抗鋸齒與物理燈光)
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.toneMapping = THREE.ACESFilmicToneMapping; // 提升亮部細節
+            v.appendChild(renderer.domElement);
+
+            // 4. 重點：燈光配置
+            // 環境光：提供基礎亮度
+            const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+            scene.add(ambientLight);
+
+            // 前置燈光 主燈：製造強烈的高光
+            const fillLightMain = new THREE.PointLight(0xffffff, 20); // center
+            fillLightMain.position.set(0, 0, 3);
+            scene.add(fillLightMain);
+
+            // 背後燈光
+            const sublight = new THREE.SpotLight(0xffffff, 50);
+            sublight.position.set(0, 0, -5);
+            sublight.castShadow = true;
+            scene.add(sublight);
+
+            // 補燈：增加側面的輪廓光
+            const fillLight = new THREE.PointLight(0xffcc00, 20); // 帶點藍色調
+            fillLight.position.set(-5, 0, -2);
+            scene.add(fillLight);
+
+            // 補燈：增加側面的輪廓光
+            const fillLight2 = new THREE.PointLight(0xffcc00, 20); // 帶點藍色調
+            fillLight2.position.set(5, 0, -2);
+            scene.add(fillLight2);
+
+            // 5. 創建幾何
+            // 展示圖片
+            const geometry = new THREE.BoxGeometry(2, 2, 0.02, 1);
+            const material = new THREE.MeshPhysicalMaterial({
+                roughness: 0.58,
+                map: tex,
+            });
+            const mesh = new THREE.Mesh(geometry, material);
+            scene.add(mesh);
+
+            // 圖片背筐
+            const geometry_back = new THREE.BoxGeometry(2, 2, 0.05, 1, 1, 1);
+            const material_back = new THREE.MeshStandardMaterial({
+                roughness: 0.5,
+                color: 0x000000,
+            });
+            const mesh_back = new THREE.Mesh(geometry_back, material_back);
+            mesh_back.position.z = -0.035;
+            scene.add(mesh_back);
+
+            // 6. 加上地板以觀察陰影與反射
+            const plane = new THREE.Mesh(
+                new THREE.PlaneGeometry(10, 10),
+                new THREE.MeshStandardMaterial({
+                    color: sceneColor,
+                    side: THREE.DoubleSide,
+                }),
+            );
+            plane.rotation.x = -Math.PI / 2;
+            plane.position.y = -2;
+            scene.add(plane);
+
+            // 控制器
+            const controls = new OrbitControls(camera, renderer.domElement);
+
+            // 動畫迴圈
+            function animate() {
+                requestAnimationFrame(animate);
+                renderer.render(scene, camera);
+            }
+
+            animate();
+
+            // 關閉畫作
+            let close = document.querySelector('.close')
+            close.addEventListener('click', () => {
+                v.classList.add('hidden')
+                close.classList.add('hidden')
+            });
+
+            // 展示畫作
+            window.openPainting = function (painting) {
+                const backgroundImage = getComputedStyle(painting).backgroundImage;
+                const imageUrl = backgroundImage.match(/^url\(["']?(.*?)["']?\)$/)?.[1];
+
+                if (!imageUrl) {
+                    console.error('Unable to find painting image URL:', backgroundImage);
+                    return;
+                }
+
+                tex = loader.load(new URL(imageUrl, document.baseURI).href, texture => {
+                    texture.colorSpace = THREE.SRGBColorSpace;
+                    material.map = texture;
+                    material.needsUpdate = true;
+                }, undefined, error => {
+                    console.error('Unable to load painting image:', imageUrl, error);
+                });
+                v.classList.remove('hidden')
+                close.classList.remove('hidden')
+                resize();
+            }
+
+            // 事件綁定
+            document.querySelectorAll('.my-painting').forEach(painting => {
+                painting.addEventListener('click', () => {
+                    window.openPainting(painting)
+                })
+            })
+
+            // 視窗縮放處理
+            function resize() {
+                let rect = { width: window.innerWidth, height: window.innerHeight }
+                camera.aspect = rect.width / rect.height;
+                camera.updateProjectionMatrix();
+                renderer.setSize(rect.width, rect.height);
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+
+        })
+    </script>
+</head>
+
+<body class="bg-diagonal text-white">
+
+    <div class="h-[2px] bg-black-500"></div>
+    <div class="h-[2px] bg-yellow-500"></div>
+    <div class="h-[2px] bg-black-500"></div>
+    <div class="h-[2px] bg-yellow-500"></div>
+    <div class="h-[2px] bg-black-500"></div>
+    <div class="h-[2px] bg-yellow-500"></div>
+    <div class="h-[2px] bg-black-500"></div>
+    <div class="h-[2px] bg-yellow-500"></div>
+    <div class="h-[2px] bg-black-500"></div>
+    <div class="h-[2px] bg-yellow-500"></div>
+
+    <div id="room3d" class="fixed left-0 top-0 right-0 bottom-0 hidden">
+
+    </div>
+    <div class="close flex justify-center items-center fixed bg-black/80 right-0 top-0 w-15 h-15 text-[32px] hidden">
+        x
+    </div>
+
+    <nav class="px-4 py-4 flex justify-between">
+        <div>
+            <span class="text-[64px] text-main italic text-yellow-500">A</span>
+            <span class="text-[64px] text-main italic">A</span>
+            <span>演算美學</span>
+            <span class="text-[12px]">v3.3331</span>
+        </div>
+        <div class="flex items-center text-[12px]">
+            edited by william77.
+        </div>
+    </nav>
+    <div class="bg-white/10 py-3">
+        <div
+            class="text-border-white font-serif font-bold text-[48px] text-black flex justify-center items-center h-[300px] bg-center bg-[url(./assets/512/diamond-pattern-simple/diamond-pattern-simple-008.png)]">
+            Art Everywhere
+        </div>
+    </div>
+    <div class="flex justify-between text-white/50 p-4 mt-10">
+        <span>作者精選畫作展示</span>
+        <a href="./old.html" class="text-white">查看更多畫作</a>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 p-4">
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/single/ascii-light-010.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/moon/moon-008.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/mountain-with-sea/mountain-with-sea-012.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/single/garden-with-fish-2.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/single/mountain-with-sun.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/float-fish/float-fish-001.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/rock-bg-and-tree/rock-bg-and-tree-009.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/flower-show/flower-show-010.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/abstract-turb/abstract-turb-011.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/algo-tree-with-abstract-bg/algo-tree-with-abstract-bg-011.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/single/abstract-impact.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/abstract-fantacy-stone/abstract-fantacy-stone-023.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/abstract-fantacy-vector/abstract-fantacy-vector-013.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/abstract-ink-flow/abstract-ink-flow-005.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/abstract-radio-disp-v3/abstract-radio-disp-v3-006.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/abstract-real-tex/abstract-real-tex-003.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/abstract-smoke/abstract-smoke-006.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/abstract-splash-ink-with-bubble/abstract-splash-ink-with-bubble-011.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/colorful-liquid/colorful-liquid-005.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/diamond-pattern/diamond-pattern-001.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/diamond-pattern-fast/diamond-pattern-fast-012.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/diamond-pattern-simple/diamond-pattern-simple-003.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/fantastic-grid/fantastic-grid-007.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/graffiti-style/graffiti-style-008.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/kaleido-real/kaleido-real-002.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/kaleido-unreal/kaleido-unreal-011.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/kali-tex/kali-tex-005.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/matrix-pattern/matrix-pattern-003.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/sea-anemone/sea-anemone-008.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/single/abstract-candy.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+        <div>
+            <div
+                class="my-painting border border-yellow-500 bg-[url(./assets/512/strange-city/strange-city-005.png)] bg-center bg-cover h-[300px] max-w-full">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
