@@ -41,7 +41,6 @@
         }
     </style>
     <script src="./assets/browser@4"></script>
-    <script async src="./es-module-shims.min.js"></script>
     <script type="importmap">
     {
         "imports": {
@@ -53,6 +52,8 @@
     <script type="module">
         import * as THREE from 'three';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+        alert(THREE.REVISION)
 
         window.addEventListener('DOMContentLoaded', () => {
 
@@ -230,7 +231,7 @@
             <span class="text-[64px] text-main italic text-yellow-500">A</span>
             <span class="text-[64px] text-main italic">A</span>
             <span>演算美學</span>
-            <span class="text-[12px]">v3.332</span>
+            <span class="text-[12px]">v3.333</span>
         </div>
         <div class="flex items-center text-[12px]">
             edited by william77.
