@@ -148,25 +148,22 @@
 
             animate();
 
-            // close room
+            // 關閉畫作
             let close = document.querySelector('.close')
             close.addEventListener('pointerup', () => {
                 v.classList.toggle('hidden')
                 close.classList.toggle('hidden')
             });
 
-            // call room 3d
-            [...document.querySelectorAll('.my-painting')].forEach((i, idx) => {
-                let imgPath = i.className.split('bg-[url(')[1].split(')]')[0]
-                i.addEventListener('pointerup', () => {
-                    alert(imgPath)
-                    tex = loader.load(imgPath);
-                    tex.colorSpace = THREE.SRGBColorSpace;
-                    material.map = tex;
-                    v.classList.toggle('hidden')
-                    close.classList.toggle('hidden')
-                })
-            })
+            // 展示畫作
+            window.openPainting = function (painting) {
+                let imgPath = painting.className.split('bg-[url(')[1].split(')]')[0]
+                tex = loader.load(imgPath);
+                tex.colorSpace = THREE.SRGBColorSpace;
+                material.map = tex;
+                v.classList.toggle('hidden')
+                close.classList.toggle('hidden')
+            }
 
             // 視窗縮放處理
             function resize() {
@@ -181,11 +178,6 @@
 
         })
     </script>
-    <style>
-        .my-painting {
-            touch-action: none;
-        }
-    </style>
 </head>
 
 <body class="bg-diagonal text-white">
@@ -213,7 +205,7 @@
             <span class="text-[64px] text-main italic text-yellow-500">A</span>
             <span class="text-[64px] text-main italic">A</span>
             <span>演算美學</span>
-            <span class="text-[12px]">v3.2</span>
+            <span class="text-[12px]">v3.1</span>
         </div>
         <div class="flex items-center text-[12px]">
             edited by william77.
@@ -231,7 +223,7 @@
     </div>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4 p-4">
         <div>
-            <div
+            <div onclick="openPainting(this)"
                 class="my-painting border border-yellow-500 bg-[url(./assets/512/single/ascii-light-010.png)] bg-center bg-cover h-[300px] max-w-full">
             </div>
         </div>
