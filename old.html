@@ -115,6 +115,7 @@
             let style50 = document.getElementById('style50')
             let style51 = document.getElementById('style51')
             let style52 = document.getElementById('style52')
+            let style53 = document.getElementById('style53')
 
             style999.onclick = () => paintings([
                 'abstract-candy',
@@ -178,8 +179,9 @@
             style50.onclick = () => painting('sketch-style');
             style51.onclick = () => painting('abstract-circle');
             style52.onclick = () => painting('pattern-8');
+            style53.onclick = () => painting('pixel-world');
 
-            style52.click()
+            style53.click()
         }
 
         function toggleMenu() {
@@ -452,6 +454,10 @@
             <div id="style52"
                 class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
                 密集
+            </div>
+            <div id="style53"
+                class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
+                像素
             </div>
             <div id="style999"
                 class="flex justify-center items-center w-15 h-10 bg-black/30 hover:bg-yellow-100/30 border-t border-gray-500 cursor-pointer text-[12px]">
